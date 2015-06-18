@@ -77,28 +77,18 @@ int main(){
 		cin >> position;
 		while (position != 'c'){
 			if (position == 'h'){
-				highest = guess;
-				if (guess % 2 == 0 && tries < 6){
-					if (guess / 2 > lowest) guess = guess / 2;
-					else guess = guess - lowest / 2;
-				}
-				else if (guess % 2 == 1 && tries < 6){
-					guess++;
-					if (guess / 2 > lowest) guess = guess / 2;
-					else guess = lowest + (guess - lowest) / 2;
+				if (tries < 6){
+					guess = guess - ((highest - guess) / 2); //guess becomes 75 - (100 - 75) / 2 = 64
 				}
 				else if (tries >= 6){
-					guess--;
+					guess++;
 				}
+				highest = guess;
 			}
 			else if (position == 'l'){
 				lowest = guess;
-				if (guess % 2 == 0 && tries < 6){
+				if (tries < 6){
 					guess = guess + ((highest - guess) / 2);
-				}
-				//subtract by 99 because we really want an even number to work with.
-				else if (guess % 2 == 1 && tries < 6){
-					guess = guess + ((highest - 1 - guess) / 2);
 				}
 				else if (tries >= 6){
 					guess++;
